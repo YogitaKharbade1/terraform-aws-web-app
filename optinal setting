@@ -1,0 +1,57 @@
+1. AWS Credentials (Authentication)
+Terraform needs permission to access your AWS account. You do not write these directly in the Terraform files (for security reasons). Instead, configure them in your terminal before running Terraform:
+
+Option A: Using the AWS CLI (Recommended) Open your command prompt/terminal and run:
+
+bash
+
+
+aws configure
+It will prompt you to enter:
+
+AWS Access Key ID
+AWS Secret Access Key
+Default region name (e.g., us-east-1)
+Option B: Environment Variables If you don't have the AWS CLI, set these variables in your terminal session:
+
+powershell
+
+
+# For Windows PowerShell:
+$env:AWS_ACCESS_KEY_ID="your_access_key"
+$env:AWS_SECRET_ACCESS_KEY="your_secret_key"
+2. General Settings in 
+terraform.tfvars
+Open your 
+terraform.tfvars
+ file to adjust the following options:
+
+AWS Region (aws_region): Sets where your infrastructure will be built.
+
+hcl
+
+
+aws_region = "us-east-1"  # Change to your preferred region (e.g., us-west-2, ap-south-1)
+SSH Key Pair (key_name): If you want to SSH/connect to the EC2 instances for testing:
+
+Go to your AWS Console -> EC2 -> Key Pairs and check your key pair name (or create a new one).
+Uncomment and add its name in terraform.tfvars:
+hcl
+
+
+key_name = "my-existing-aws-key"
+3. Custom Settings (Optional)
+If you want to customize your setup further:
+
+Custom AMI (ami_id): By default, Terraform dynamically searches for the latest official Amazon Linux 2 image. If you prefer to manually supply an AMI ID, uncomment it in terraform.tfvars:
+
+hcl
+
+
+ami_id = "ami-0c7217cdde317cfec"  # Replace with your specific AMI ID
+Instance Type (instance_type): If you need larger instances than t2.micro (which is AWS Free-Tier eligible):
+
+hcl
+
+
+instance_type = "t3.micro"
