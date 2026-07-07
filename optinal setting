@@ -1,3 +1,9 @@
+
+
+
+
+
+
 1. AWS Credentials (Authentication)
 Terraform needs permission to access your AWS account. You do not write these directly in the Terraform files (for security reasons). Instead, configure them in your terminal before running Terraform:
 
@@ -9,8 +15,8 @@ bash
 aws configure
 It will prompt you to enter:
 
-AWS Access Key ID
-AWS Secret Access Key
+AWS Access Key ID    
+AWS Secret Access Key    
 Default region name (e.g., us-east-1)
 Option B: Environment Variables If you don't have the AWS CLI, set these variables in your terminal session:
 
@@ -18,8 +24,8 @@ powershell
 
 
 # For Windows PowerShell:
-$env:AWS_ACCESS_KEY_ID="your_access_key"
-$env:AWS_SECRET_ACCESS_KEY="your_secret_key"
+$env:AWS_ACCESS_KEY_ID=   
+$env:AWS_SECRET_ACCESS_KEY=  
 2. General Settings in 
 terraform.tfvars
 Open your 
@@ -30,7 +36,7 @@ AWS Region (aws_region): Sets where your infrastructure will be built.
 
 hcl
 
-
+******change resion in a vpc variable file******************
 aws_region = "us-east-1"  # Change to your preferred region (e.g., us-west-2, ap-south-1)
 SSH Key Pair (key_name): If you want to SSH/connect to the EC2 instances for testing:
 
