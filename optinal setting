@@ -1,5 +1,11 @@
 
 
+**********terraform install********
+
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+
 
 
 
@@ -9,9 +15,6 @@ Terraform needs permission to access your AWS account. You do not write these di
 
 Option A: Using the AWS CLI (Recommended) Open your command prompt/terminal and run:
 
-bash
-
-
 aws configure
 It will prompt you to enter:
 
@@ -20,12 +23,19 @@ AWS Secret Access Key
 Default region name (e.g., us-east-1)
 Option B: Environment Variables If you don't have the AWS CLI, set these variables in your terminal session:
 
-powershell
+cofigure aws cli 
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
+aws configure
 
-# For Windows PowerShell:
 $env:AWS_ACCESS_KEY_ID=   
 $env:AWS_SECRET_ACCESS_KEY=  
+
+
+
+
 2. General Settings in 
 terraform.tfvars
 Open your 
@@ -46,6 +56,8 @@ hcl
 
 
 key_name = "my-existing-aws-key"
+
+
 3. Custom Settings (Optional)
 If you want to customize your setup further:
 
